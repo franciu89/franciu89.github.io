@@ -172,4 +172,44 @@
       line-height: 1.5;
     }
   }
+
+  /* Dark mode styles */
+  @media (prefers-color-scheme: dark) {
+    #container {
+      background: #18181b;
+      color: #f4f4f5;
+    }
+    .box {
+      background: #232336;
+      border-color: #232336;
+    }
+    h1, h2 {
+      color: #f4f4f5;
+    }
+    p {
+      color: #a1a1aa;
+    }
+    code {
+      background:
+        linear-gradient(66.77deg, #3a2d4d 0%, #2d2d3a 100%) padding-box,
+        linear-gradient(155deg, #d83333 0%, #f041ff 18%, #232336 45%) border-box;
+    }
+    #links a {
+      color: #f4f4f5;
+    }
+    #links a.button {
+      background: linear-gradient(83.21deg, #2323a1 0%, #7c2ae8 100%);
+      color: #fff;
+    }
+    #links a.button:hover {
+      color: #e5e5e5;
+    }
+    #news {
+      background: rgba(36, 36, 48, 0.85);
+      color: #f4f4f5;
+    }
+    #news:hover {
+      background: rgba(36, 36, 48, 0.55);
+    }
+  }
 </style>

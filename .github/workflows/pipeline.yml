@@ -3,6 +3,10 @@ name: Deploy Astro site to Pages
 on:
   push:
     branches: [master]
+    paths:
+      - src
+      - public
+      - yarn.lock
   workflow_dispatch:
 
 permissions:

@@ -1,0 +1,54 @@
+---
+const { galleryImages = [] } = Astro.props;
+---
+
+<div class="carousel">
+  <button class="carousel-btn prev" aria-label="Previous image" id="carousel-prev">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="11" fill="var(--primary)" stroke="var(--primary)"/><polyline points="14.5 8 10.5 12 14.5 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <img class="carousel-image" id="carousel-image" src={galleryImages[0] ?? ''} alt="Flat photo" data-images={JSON.stringify(galleryImages)} />
+  <button class="carousel-btn next" aria-label="Next image" id="carousel-next">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="11" fill="var(--primary)" stroke="var(--primary)"/><polyline points="9.5 8 13.5 12 9.5 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+</div>
+<div class="carousel-indicators">
+  {
+    galleryImages.map((_: unknown, i: number) => (
+      <button
+        class={i === 0 ? "carousel-indicator active" : "carousel-indicator"}
+        data-index={i}
+        aria-label={`Go to image ${i + 1}`}
+      />
+    ))
+  }
+</div>
+<script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    const images = JSON.parse(
+      document.getElementById("carousel-image").getAttribute("data-images")
+    );
+    let current = 0;
+    const img = document.getElementById("carousel-image");
+    const prev = document.getElementById("carousel-prev");
+    const next = document.getElementById("carousel-next");
+    const indicators = document.querySelectorAll(".carousel-indicator");
+    function updateCarousel(idx) {
+      current = idx;
+      img.src = images[current];
+      indicators.forEach((el, i) => {
+        el.classList.toggle("active", i === current);
+      });
+    }
+    prev.addEventListener("click", () => {
+      updateCarousel((current - 1 + images.length) % images.length);
+    });
+    next.addEventListener("click", () => {
+      updateCarousel((current + 1) % images.length);
+    });
+    indicators.forEach((el, i) => {
+      el.addEventListener("click", () => updateCarousel(i));
+    });
+  });
+</script>
+<!-- Pass images as a data attribute for safe JS access -->
+<!-- Add data-images attribute to the image element -->

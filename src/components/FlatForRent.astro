@@ -1,0 +1,56 @@
+---
+import "../styles/flat-for-rent.css";
+import Carousel from "./Carousel.astro";
+
+const mainImage = "/flat-main.jpg";
+const galleryImages = [
+  "/flat-living.jpg",
+  "/flat-bedroom.jpg",
+  "/flat-kitchen.jpg",
+  "/flat-bathroom.jpg",
+];
+const features = [
+  { label: "Bedrooms", value: "1" },
+  { label: "Bathrooms", value: "1" },
+  { label: "Size", value: "60 m²" },
+  { label: "Floor", value: "1st" },
+  { label: "Parking", value: "Resident Permit Holder" },
+];
+const description = `
+A bright 1-bedroom flat located in Glasgow West End. Spacious living area, and a fully equipped kitchen. Close to public transport, shops, and parks. Ideal for professionals.`;
+const price = "£/month";
+---
+
+<section class="flat-hero">
+  <img src={mainImage} alt="Main view of the flat" class="flat-main-image" />
+  <h1>1-Bedroom Flat for Rent</h1>
+  <p class="flat-price">{price}</p>
+</section>
+
+<section class="flat-gallery">
+  <h2>Gallery</h2>
+  <Carousel galleryImages={galleryImages} client:load />
+</section>
+
+<section class="flat-features">
+  <h2>Key Features</h2>
+  <ul>
+    {
+      features.map((f) => (
+        <li>
+          <strong>{f.label}:</strong> {f.value}
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<section class="flat-description">
+  <h2>Description</h2>
+  <p>{description}</p>
+</section>
+
+<section class="flat-availability">
+  <h2>Availability & Pricing</h2>
+  <p>Available Summer 2025. {price}</p>
+</section>

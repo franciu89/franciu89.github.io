@@ -1,18 +1,22 @@
+/* Preserve newlines and formatting in the description */
+.flat-description p {
+  white-space: pre-line;
+}
 /* Muted indigo/blue-based color palette with dark mode support */
 :root {
-  --primary: #6366f1;      /* Muted indigo */
+  --primary: #6366f1; /* Muted indigo */
   --primary-dark: #4755a6; /* Muted blue for dark mode */
-  --accent: #e5e7eb;       /* Light gray */
-  --bg: #f3f4f6;           /* Very light gray */
-  --text: #232336;         /* Deep gray */
-  --feature-bg: #f9fafb;   /* Subtle off-white */
+  --accent: #e5e7eb; /* Light gray */
+  --bg: #f3f4f6; /* Very light gray */
+  --text: #232336; /* Deep gray */
+  --feature-bg: #f9fafb; /* Subtle off-white */
   --feature-shadow: 0 2px 12px rgba(99, 102, 241, 0.06);
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
 }
 
 .flat-hero {
@@ -134,18 +138,6 @@ body {
   font-size: 1.13rem;
   color: var(--text);
   line-height: 1.7;
-}
-
-.flat-availability {
-  background: var(--accent);
-  border-radius: 0.75rem;
-  padding: 1.25rem 1rem;
-  text-align: center;
-  font-weight: 700;
-  color: var(--primary-dark);
-  margin-bottom: 2.5rem;
-  font-size: 1.18rem;
-  box-shadow: 0 2px 12px var(--feature-shadow);
 }
 
 .carousel {
@@ -280,11 +272,6 @@ body {
   .flat-description {
     background: #232336;
     color: #e5e7eb;
-    box-shadow: 0 2px 12px var(--feature-shadow);
-  }
-  .flat-availability {
-    background: #232336;
-    color: var(--primary);
     box-shadow: 0 2px 12px var(--feature-shadow);
   }
   .carousel-btn {

@@ -1,24 +1,46 @@
 ---
 import "../styles/flat-for-rent.css";
-import Carousel from "./Carousel.astro";
+import Carousel from "./Carousel.tsx";
 
 const mainImage = "/flat-main.jpg";
 const galleryImages = [
+  "/flat-hall.jpg",
   "/flat-living.jpg",
   "/flat-bedroom.jpg",
   "/flat-kitchen.jpg",
   "/flat-bathroom.jpg",
+  "/flat-utility-room.jpg",
 ];
 const features = [
   { label: "Bedrooms", value: "1" },
   { label: "Bathrooms", value: "1" },
   { label: "Size", value: "60 m²" },
   { label: "Floor", value: "1st" },
-  { label: "Parking", value: "Resident Permit Holder" },
 ];
-const description = `
-A bright 1-bedroom flat located in Glasgow West End. Spacious living area, and a fully equipped kitchen. Close to public transport, shops, and parks. Ideal for professionals.`;
-const price = "£/month";
+
+const description = `A bright 1-bedroom furnished flat located in Glasgow West End. Spacious living area, and a fully equipped kitchen.
+
+Close to public transport, shops, and parks. Ideal for professionals.
+
+Let available date: September 2025
+
+Let type: long term
+
+Deposit: $1,200
+
+Furnish type: Yes
+
+Council Tax: Band B
+
+Utilities: Not included
+
+Pets: not allowed.
+
+Smoking: not allowed.
+
+Parking: Street parking available, with a resident permit required.`;
+
+const price = "£850/month";
 ---
 
 <section class="flat-hero">
@@ -48,9 +70,4 @@ const price = "£/month";
 <section class="flat-description">
   <h2>Description</h2>
   <p>{description}</p>
-</section>
-
-<section class="flat-availability">
-  <h2>Availability & Pricing</h2>
-  <p>Available Summer 2025. {price}</p>
 </section>

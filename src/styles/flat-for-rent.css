@@ -146,11 +146,15 @@ body {
   justify-content: center;
   gap: 1rem;
   position: relative;
+  width: 100%;
+  max-width: 700px; /* adjust as needed */
+  margin: 0 auto;
 }
 .carousel-image {
-  width: 320px;
-  height: 220px;
+  width: 100%;
+  height: 400px; /* or auto, or a larger value */
   object-fit: cover;
+  border-radius: 10px;
   border-radius: 1rem;
   border: 3px solid #fff;
   box-shadow: 0 2px 12px var(--feature-shadow);
@@ -246,9 +250,16 @@ body {
   .flat-hero {
     background: linear-gradient(120deg, var(--primary) 0%, #334155 100%);
     color: #fff;
+    text-align: center;
+    padding: 2rem 0;
   }
   .flat-main-image {
-    border: 4px solid #232336;
+    width: 100%;
+    max-width: 800px; /* or larger if you want */
+    height: auto;
+    display: block;
+    margin: 0 auto 1rem auto;
+    border-radius: 12px; /* optional for a modern look */
   }
   .flat-price {
     color: var(--primary);
@@ -256,6 +267,8 @@ body {
   .flat-gallery h2,
   .flat-features h2 {
     color: var(--primary);
+    max-width: 800px; /* or larger */
+    margin: 2rem auto;
   }
   .gallery-image {
     border: 3px solid #232336;

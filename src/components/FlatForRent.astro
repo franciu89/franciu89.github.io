@@ -2,10 +2,9 @@
 import "../styles/flat-for-rent.css";
 import Carousel from "./Carousel.tsx";
 
-const mainImage = "/flat-main.jpg";
 const galleryImages = [
-  "/flat-hall.jpg",
-  "/flat-living.jpg",
+  "/assets/building-1.jpg",
+  "/assets/common-garden.jpg",
   "/flat-bedroom.jpg",
   "/flat-kitchen.jpg",
   "/flat-bathroom.jpg",
@@ -18,17 +17,13 @@ const features = [
   { label: "Floor", value: "1st" },
 ];
 
-const description = `A bright 1-bedroom furnished flat located in Glasgow West End. Spacious living area, and a fully equipped kitchen.
-
-Close to public transport, shops, and parks. Ideal for professionals.
+const description = `A bright 1-bedroom furnished flat located in Glasgow West End. Spacious living area, and a fully equipped kitchen. Close to public transport, shops, and parks. Ideal for professionals.
 
 Let available date: September 2025
 
 Let type: long term
 
-Deposit: $1,200
-
-Furnish type: Yes
+Deposit: £1,050
 
 Council Tax: Band B
 
@@ -38,13 +33,12 @@ Pets: not allowed.
 
 Smoking: not allowed.
 
-Parking: Street parking available, with a resident permit required.`;
+Parking: street parking available, with a resident permit required.`;
 
 const price = "£850/month";
 ---
 
 <section class="flat-hero">
-  <img src={mainImage} alt="Main view of the flat" class="flat-main-image" />
   <h1>1-Bedroom Flat for Rent</h1>
   <p class="flat-price">{price}</p>
 </section>

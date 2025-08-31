@@ -7,11 +7,38 @@ interface CarouselProps {
 
 const Carousel: React.FC<CarouselProps> = ({ galleryImages = [] }) => {
   const [current, setCurrent] = useState(0);
+  const [fullscreen, setFullscreen] = useState(false);
 
   const goTo = (idx: number) => setCurrent(idx);
   const prev = () =>
     setCurrent((current - 1 + galleryImages.length) % galleryImages.length);
   const next = () => setCurrent((current + 1) % galleryImages.length);
+
+  // Touch swipe logic
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.changedTouches[0].clientX);
+    setTouchEndX(null);
+  };
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.changedTouches[0].clientX);
+  };
+  const handleTouchEnd = () => {
+    if (touchStartX !== null && touchEndX !== null) {
+      const dx = touchEndX - touchStartX;
+      if (Math.abs(dx) > 40) {
+        if (dx > 0) {
+          prev(); // swipe right
+        } else {
+          next(); // swipe left
+        }
+      }
+    }
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
 
   return (
     <>
@@ -48,11 +75,18 @@ const Carousel: React.FC<CarouselProps> = ({ galleryImages = [] }) => {
             />
           </svg>
         </button>
-        <div className="carousel-image-wrapper">
+        <div
+          className="carousel-image-wrapper"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <img
             className="carousel-image"
             src={galleryImages[current] ?? ""}
             alt="Flat photo"
+            style={{ cursor: "zoom-in" }}
+            onClick={() => setFullscreen(true)}
           />
         </div>
         <button
@@ -100,6 +134,40 @@ const Carousel: React.FC<CarouselProps> = ({ galleryImages = [] }) => {
           />
         ))}
       </div>
+      {fullscreen && (
+        <div className="fullscreen-modal" onClick={() => setFullscreen(false)}>
+          <div
+            className="fullscreen-gallery"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {galleryImages.map((img, idx) => (
+              <img
+                key={img}
+                className={
+                  "fullscreen-image" + (idx === current ? " active" : "")
+                }
+                src={img}
+                alt={`Flat photo fullscreen ${idx + 1}`}
+                onClick={() => setCurrent(idx)}
+                style={{
+                  border:
+                    idx === current ? "4px solid #6366f1" : "4px solid #fff",
+                  opacity: idx === current ? 1 : 0.7,
+                  cursor: idx === current ? "auto" : "pointer",
+                }}
+                onDoubleClick={() => setFullscreen(false)}
+              />
+            ))}
+          </div>
+          <button
+            className="fullscreen-close"
+            onClick={() => setFullscreen(false)}
+            aria-label="Close fullscreen"
+          >
+            &times;
+          </button>
+        </div>
+      )}
     </>
   );
 };

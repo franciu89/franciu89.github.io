@@ -48,11 +48,13 @@ const Carousel: React.FC<CarouselProps> = ({ galleryImages = [] }) => {
             />
           </svg>
         </button>
-        <img
-          className="carousel-image"
-          src={galleryImages[current] ?? ""}
-          alt="Flat photo"
-        />
+        <div className="carousel-image-wrapper">
+          <img
+            className="carousel-image"
+            src={galleryImages[current] ?? ""}
+            alt="Flat photo"
+          />
+        </div>
         <button
           className="carousel-btn next"
           aria-label="Next image"

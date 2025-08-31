@@ -130,7 +130,8 @@ body {
 }
 
 .flat-description {
-  margin: 2.5rem 0 2rem 0;
+  max-width: 800px;
+  margin: 2.5rem auto 2rem auto;
   background: #fff;
   border-radius: 1rem;
   padding: 2rem 1.5rem;
@@ -147,18 +148,24 @@ body {
   gap: 1rem;
   position: relative;
   width: 100%;
-  max-width: 700px; /* adjust as needed */
+  max-width: 800px;
   margin: 0 auto;
 }
 .carousel-image {
   width: 100%;
-  height: auto; /* or auto, or a larger value */
+  height: 100%;
   object-fit: cover;
-  border-radius: 10px;
   border-radius: 1rem;
   border: 3px solid #fff;
   box-shadow: 0 2px 12px var(--feature-shadow);
   transition: box-shadow 0.2s;
+}
+
+.carousel-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
 }
 .carousel-btn {
   background: var(--primary);
